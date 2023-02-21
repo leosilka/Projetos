@@ -1,12 +1,17 @@
-const robotron = document.querySelector("#robotron")
+const controle = document.querySelectorAll(".controle-ajuste")
 
-robotron.addEventListener("click", () => {
-  console.log("Cliquei no Robo")
+controle.forEach( (elemento) => {
+  elemento.addEventListener("click", (evento) => {
+    manipulaDados(evento.target.textContent, evento.target.parentNode)
+  })
 })
 
-function dizOi(nome) {
-  console.log("oi" + nome)
-  console.log('Bem-vindo ao Robotron 2000')
-}
+function manipulaDados(operacao, controle) {
+  const peca = controle.querySelector(".controle-contador")
 
-dizOi("Pedro")
+  if(operacao === "-") {
+      peca.value = parseInt(peca.value) - 1
+  } else {
+      peca.value = parseInt(peca.value) + 1
+  }
+}
